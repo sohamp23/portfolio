@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-void text-paper antialiased;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(155, 107, 255, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(155, 107, 255, 0.06) 0%, transparent 40%);
+}
+
+::selection {
+  background-color: rgba(155, 107, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #08060c;
+}
+::-webkit-scrollbar-thumb {
+  background: #4c2a85;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6e3ed6;
+}
+
+/* Visible keyboard focus everywhere interactive */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #ae87ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.035] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .text-gradient {
+    @apply bg-signal-gradient bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply px-6 sm:px-10 lg:px-16;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-signal-300;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
